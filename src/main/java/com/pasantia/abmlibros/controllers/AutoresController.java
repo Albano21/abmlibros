@@ -20,8 +20,8 @@ public class AutoresController {
     //agregar un autor
     @PutMapping("/{id}")
     public ResponseEntity guardar(@RequestBody Autor nuevo){
-
-        if(nuevo != null){
+        // verifica que el objeto y el nombre no sean null
+        if(nuevo != null && nuevo.getNombre() != null){
             autoresService.guardar(nuevo);
             return new ResponseEntity(HttpStatus.CREATED);
         }
