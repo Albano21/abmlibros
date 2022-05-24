@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface AutoresRepository extends JpaRepository<Autor, Integer> {
 
-    Autor getAutorByNombre(String nombre);
+    Autor getAutorByNombreContainingIgnoreCase(String nombre);
 }

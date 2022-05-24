@@ -3,10 +3,7 @@ package com.pasantia.abmlibros.controllers;
 import com.pasantia.abmlibros.entities.Libro;
 import com.pasantia.abmlibros.services.ReportesService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 
@@ -28,14 +25,14 @@ public class ReportesController {
     }
 
     //Listado de todos los libros buscando por titulo
-    @GetMapping("/titulo/{tit}")
-    public Collection<Libro> consultarPorTitulo(@PathVariable String tit){
+    @GetMapping("/titulo")
+    public Collection<Libro> consultarPorTitulo(@RequestParam(required = false) String tit){
         return reportesService.buscarPorTitulo(tit);
     }
 
     //Listado de todos los libros de un autor buscado por nombre
-    @GetMapping("/autor/{nom}")
-    public Collection<Libro> consultarLibrosPorNombreAutor(@PathVariable String nom){
+    @GetMapping("/autor")
+    public Collection<Libro> consultarLibrosPorNombreAutor(@RequestParam(required = false) String nom){
         return reportesService.buscarPorNombreAutor(nom);
     }
 }

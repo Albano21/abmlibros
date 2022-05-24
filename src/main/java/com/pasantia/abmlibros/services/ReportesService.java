@@ -31,12 +31,12 @@ public class ReportesService {
 
     public Collection<Libro> buscarPorNombreAutor(String nom){
 
-        Autor autor = autoresRepo.getAutorByNombre(nom);
+        Autor autor = autoresRepo.getAutorByNombreContainingIgnoreCase(nom);
         if (autor != null){
-            return new ArrayList<>();
+            return librosRepo.getAllByIdAutor(autor.getId());
         }
         else{
-            return librosRepo.getAllByIdAutor(autor.getId());
+            return new ArrayList<>();
         }
 
     }
